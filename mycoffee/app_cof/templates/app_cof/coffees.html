@@ -1,0 +1,31 @@
+{% extends 'app_gen/components/base.html' %}
+{% load static %}
+{% block site_title %}เมนูทั้งหมด | {% endblock %}
+
+{% block content %}
+<div>
+    <h2>อร่อยถูกใจ ล้างไตทุกอาทิตย์</h2>
+    {% for coffee in coffees %}
+      <div style="background-color: bisque;">
+        <div>
+          <a href="{% url 'coffee' coffee.id %}"><img src="{% static coffee.image %}"></a>
+        </div>
+        <h3><a href="{% url 'coffee' coffee.id %}">{{coffee.title}}</a></h3>
+        {% if coffee.special_price is not None %}
+            <p>
+              <span>{{ coffee.special_price|floatformat:'g' }} ฿</span>
+              <del>{{ coffee.price|floatformat:'g'}} ฿</del>
+            </p> 
+        {% else %}
+            <p>{{ coffee.price|floatformat:'g' }} ฿</p>
+        {% endif %}
+        {% if coffee.is_premium %}
+        <p>*** เมนูพิเศษ premium</p>
+        {% endif %}
+        <p>โปรโมชันถึงวันที่ {{ coffee.promotion_end_at | date:'j N Y' }}</p>
+      </div>
+    {% empty %}
+       <p>ของหมดครับเธอ</p>
+    {% endfor %}
+</div>
+{% endblock %}

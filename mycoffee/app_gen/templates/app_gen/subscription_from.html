@@ -1,0 +1,38 @@
+{% extends 'app_gen/components/base.html' %}
+
+{% block site_title %}ลงทะเบียนรับโปรโมชั่น | {% endblock %}
+
+{% block content %}
+<h2>ลงทะเบียนรับโปรโมชั่น</h2>
+    <p>กรุณาใส่ข้อมูลจริง เพื่อความสะดวกในการรับโปรโมชั่นพิเศษ</p>
+<form action="{% url 'subscription' %}" method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div style="margin-bottom: 16px;">
+        {{ form.name.label_tag }}
+        {{ form.name }}
+        {{ form.name.errors }}
+    </div>
+    <div style="margin-bottom: 16px;">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {{ form.email.errors }}
+    </div>
+    <div style="margin-bottom: 16px;">
+        {{ form.coffee_set.label_tag }}
+        {{ form.coffee_set }}
+        {{ form.coffee_set.errors }}
+    </div>
+    <div style="margin-bottom: 16px;">
+        <label>อ่านข้อตกลงและเงื่อนไข</label>
+        <label>
+            {{ form.accepted }} {{ form.accepted.label  }}
+        </label>
+        {{ form.accepted.errors }}
+        
+    </div>
+    <div style="margin: bottom 16px;">
+        <button type="submit">ลงทะเบียนรับโปรโมชั่น</button>
+    </div>
+</form>
+{% endblock %}

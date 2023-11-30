@@ -1,0 +1,32 @@
+{% extends 'app_gen/components/base.html' %}
+{% load static %}
+{% block site_title %}{{ coffee.title }} = {{coffee_id}} | {% endblock %}
+
+{% block content %}
+{% if coffee is not None %}
+<div>
+  <div>
+    <img src="{% static coffee.image %}">
+  </div>
+    <h3>{{coffee.title}}</h3> 
+    {% if coffee.special_price is not None %}
+            <p>
+              <span>{{ coffee.special_price|floatformat:'g'}}฿</span>
+              <del>{{ coffee.price|floatformat:'g' }} ฿</del>
+            </p> 
+        {% else %}
+            <p>{{ coffee.price|floatformat:'g' }} ฿</p>
+        {% endif %}
+    <p>{{ coffee.price | floatformat:"g"}} ฿</p>
+    {% if coffee.is_premium %}
+    <p>*** เมนูพิเศษ premium</p>
+    {% endif %}
+    <p>โปรโมชันถึงวันที่ {{ coffee.promotion_and_at | date:'j N Y' }}</p>
+    <p></p>
+  </div>
+
+
+{% else %}
+   <p>ไม่พบเมนูนี้</p>
+{% endif %}
+{% endblock %}

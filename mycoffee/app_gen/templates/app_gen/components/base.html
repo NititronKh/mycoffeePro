@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block site_title %}{% endblock %}สำราญคาเฟ่</title>
+    <link rel="icon" href="{% static 'app_gen/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'app_gen/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'app_gen/main.css' %}">
+</head>
+<body>
+    {% include 'app_gen/components/site_header.html' %}
+    {% block content %}{% endblock %}
+    {% include 'app_gen/components/site_footer.html' %}
+</body>
+</html>

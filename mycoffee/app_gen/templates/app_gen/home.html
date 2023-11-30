@@ -1,0 +1,37 @@
+{% extends 'app_gen/components/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="home">
+    <h1 class="home-text">สำราญคาเฟ่</h1>
+    <h4 class="home-text">ถ้ากาแฟของเราทำให้คุณใจสั่น..นั้นแหละ "ความรัก"</h4>
+    <p>
+        <a class="button" href="{% url 'coffees' %}">ดูเมนูทั้งหมด</a>
+        <a class="button bp" href="{% url 'subscription' %}">ลงทะเบียนเพื่อรับโปรโมชั่น</a>
+    </p>
+</div>
+<section class="content-section">
+    <div class="content-container">
+        <h4 class="content-title text-center">อธิบายอะไรสักหน่อย</h4>
+        <div class="grid grid-3">
+            <div>
+                <img class="image-block" src="{% static 'app_gen/home-about-1.jpg' %}">
+                <p>อร่อยถูกใจ ล้างไตทุกอาทิตย์</p>
+            </div>
+            <div>
+                <img class="image-block" src="{% static 'app_gen/home-about-2.jpg' %}">
+                <p>อร่อยถูกใจ ล้างไตทุกอาทิตย์</p>
+            </div>
+            <div>
+                <img class="image-block" src="{% static 'app_gen/home-about-3.jpg' %}">
+                <p>อร่อยถูกใจ ล้างไตทุกอาทิตย์</p>
+            </div>
+        </div>
+        <p class="text-center">
+            <a class="button" href="{% url 'about' %}">เกี่ยวกับ</a>
+        </p>
+    </div>
+    
+</section>
+
+{% endblock %}
